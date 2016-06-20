@@ -1,4 +1,9 @@
 set backspace=2
+set noshowmode
+
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
 "===============================================
 " Cursor position highlightings
@@ -16,6 +21,7 @@ hi CursorLine cterm=none ctermbg=52 ctermfg=none
 
 set textwidth=80
 set colorcolumn=+1
+hi ColorColumn ctermbg=52 
 
 "===============================================
 "Line numbers
@@ -52,15 +58,4 @@ set expandtab
 "===============================================
 let g:indentLine_color_term = 239
 
-"===============================================
-" Plugins
-"===============================================
 
-call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'Yggdroot/indentLine'
-call plug#end()
