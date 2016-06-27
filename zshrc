@@ -1,6 +1,14 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/ilya/.oh-my-zsh
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
 
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+
+ensure_tmux_is_running
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
