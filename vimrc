@@ -1,3 +1,5 @@
+let mapleader = " "
+
 set backspace=2
 set noshowmode
 set noswapfile
