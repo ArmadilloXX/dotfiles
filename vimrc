@@ -1,5 +1,9 @@
 set backspace=2
 set noshowmode
+set noswapfile
+set nobackup
+set nowb
+set nowrap
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
