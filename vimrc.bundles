@@ -1,10 +1,11 @@
 runtime macros/matchit.vim
 
+call plug#begin()
+
 "===============================================
-" Plugins
+" Workflow plugins
 "===============================================
 
-call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
@@ -14,14 +15,19 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
+Plug 'kana/vim-textobj-user'
+
+"===============================================
+" Languages plugins
+"===============================================
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
-Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
+
 call plug#end()
 
 let g:lightline = {
