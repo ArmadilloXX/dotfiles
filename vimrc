@@ -1,5 +1,11 @@
 let mapleader = " "
 
+set nocompatible
+
+if has("autocmd")
+  filetype indent plugin on
+endif
+
 set backspace=2
 set noshowmode
 set noswapfile
