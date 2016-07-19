@@ -1,4 +1,5 @@
 let mapleader = " "
+imap <C-h> <esc>:w<cr>
 
 set nocompatible
 
