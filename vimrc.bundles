@@ -16,6 +16,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
 Plug 'kana/vim-textobj-user'
+Plug 'christoomey/vim-tmux-navigator'
 
 "===============================================
 " Languages plugins
