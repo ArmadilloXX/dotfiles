@@ -1,5 +1,6 @@
 [alias]
   l = log --pretty=colored	
+	ctags = !.git/hooks/ctags
 [pretty]
   colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
 [user]
@@ -7,3 +8,5 @@
   email = ilya.dolgirev@gmail.com
 [credential]
   helper = osxkeychain
+[init]
+	templatedir = ~/.git_template
