@@ -13,6 +13,10 @@ set noswapfile
 set nobackup
 set nowb
 set nowrap
+set nopaste
+set autoindent
+set smartindent
+:set pastetoggle=<F1>
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
