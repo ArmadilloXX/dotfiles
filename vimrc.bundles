@@ -28,6 +28,7 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
