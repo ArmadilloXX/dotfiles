@@ -107,3 +107,7 @@ ulimit -n 1024
 dash() {
 	open dash://$1
 }
+export JENV_ROOT=/usr/local/var/jenv
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
