@@ -111,3 +111,7 @@ export JENV_ROOT=/usr/local/var/jenv
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+export NODENV_ROOT=/usr/local/var/nodenv
+# if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+eval "$(nodenv init -)"
