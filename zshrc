@@ -93,25 +93,33 @@ alias current='cd ~/Coding/RoR/mkdev/flashcards-chef-repo/'
 alias be='bundle exec'
 alias bi='bundle install'
 
+# Fix Vagrant issue when ulimit is too small
+ulimit -n 1024
+
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+
+# ChefDK configuration
+# export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
+export PATH="/opt/chefdk/embedded/bin:$PATH"
+
+# Rbenv configuration
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-export PATH=$HOME/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/bin:$PATH
-# export PATH="/opt/chefdk/embedded/bin:$PATH"
-
-# Fix Vagrant issue when ulimit is too small
-ulimit -n 1024
 
 dash() {
 	open dash://$1
 }
+
+# Jenv configuration
 export JENV_ROOT=/usr/local/var/jenv
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
+# Nodenv configuration
 export NODENV_ROOT=/usr/local/var/nodenv
-# if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
+
