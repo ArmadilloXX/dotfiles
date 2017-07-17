@@ -1,5 +1,15 @@
+"To use fzf in Vim, add the following line to your .vimrc:
+set rtp+=/usr/local/opt/fzf
+
 let mapleader = " "
 imap <C-h> <esc>:w<cr>
+
+" Colorscheme
+colorscheme pablo
+
+" Some protection for annoying typos
+command! W w
+command! Wq wq
 
 set nocompatible
 
@@ -86,4 +96,8 @@ set expandtab
 "===============================================
 let g:indentLine_color_term = 239
 
-
+"===============================================
+" Use CtrlP Mixed Mode by default
+"===============================================
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
