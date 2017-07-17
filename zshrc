@@ -60,7 +60,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vagrant)
+plugins=(vagrant vi-mode)
 
 # User configuration
 
@@ -92,9 +92,10 @@ source $ZSH/oh-my-zsh.sh
 alias current='cd ~/Coding/RoR/mkdev/flashcards-chef-repo/'
 alias be='bundle exec'
 alias bi='bundle install'
+alias dmlocal='eval "$(docker-machine env -u)"'
 
 # Fix Vagrant issue when ulimit is too small
-ulimit -n 1024
+ulimit -n 4096
 
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
@@ -107,6 +108,10 @@ export PATH="/opt/chefdk/embedded/bin:$PATH"
 # Rbenv configuration
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+dmconnect() {
+  eval $(docker-machine env $1)
+}
 
 dash() {
 	open dash://$1
@@ -123,3 +128,13 @@ export NODENV_ROOT=/usr/local/var/nodenv
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
+export HOMEBREW_GITHUB_API_TOKEN=$(security find-generic-password -s 'Homebrew GH Token' -w)
+export EDITOR="vim"
+export GEM_EDITOR="vim"
+export GIT_EDITOR="vim"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#Go configuration
+export PATH="/usr/local/go/bin:$PATH"
+export GOPATH=$HOME/Coding/Go
