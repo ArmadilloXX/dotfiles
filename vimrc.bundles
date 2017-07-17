@@ -27,13 +27,21 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
+Plug 'kchmck/vim-coffee-script'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'mattn/emmet-vim'
+Plug 'posva/vim-vue'
+
+"===============================================
+" Themes
+"===============================================
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'dracula/vim'
 
 call plug#end()
 
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
       \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -53,7 +61,8 @@ let g:lightline = {
       \ 'component_type': {
       \   'syntastic': 'error',
       \ },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ 'subseparator': { 'left': '\ue0b1', 'right': '\ue0b3' },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" }
       \ }
 
 function! LightLineModified()
@@ -80,7 +89,7 @@ endfunction
 function! LightLineFugitive()
   try
     if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = "\ue0a0 "  " edit here for cool mark
+      let mark = "\ue725  "  " edit here for cool mark e0a0
       let branch = fugitive#head()
       return branch !=# '' ? mark.branch : ''
     endif
