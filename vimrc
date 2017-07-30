@@ -4,6 +4,7 @@ set rtp+=/usr/local/opt/fzf
 let mapleader = " "
 imap <C-h> <esc>:w<cr>
 
+
 " Colorscheme
 colorscheme pablo
 
@@ -99,5 +100,9 @@ let g:indentLine_color_term = 239
 "===============================================
 " Use CtrlP Mixed Mode by default
 "===============================================
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+
+nnoremap <C-p> :Files<CR>
+nnoremap <Leader><Leader> :Buffers<CR>
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip

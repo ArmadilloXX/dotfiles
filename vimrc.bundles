@@ -7,7 +7,7 @@ call plug#begin()
 "===============================================
 
 Plug 'tpope/vim-sensible'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'janko-m/vim-test'
@@ -17,6 +17,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf.vim'
 
 "===============================================
 " Languages plugins
