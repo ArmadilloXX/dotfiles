@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/ilya/.oh-my-zsh
+
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
 ensure_tmux_is_running() {
@@ -9,11 +10,23 @@ ensure_tmux_is_running() {
 }
 
 ensure_tmux_is_running
+
+bindkey -e
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="spaceship"
+
+# Spaceship theme configuration
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_BATTERY_SHOW=false
+SPACESHIP_BATTERY_ALWAYS_SHOW=false
+SPACESHIP_VI_MODE_SHOW=false
+#
+#
+# ZSH_THEME="robbyrussell"
 # ZSH_THEME="excess"
 # ZSH_THEME="miloshadzic"
 # ZSH_THEME="agnoster"
@@ -138,3 +151,6 @@ export GIT_EDITOR="vim"
 #Go configuration
 export PATH="/usr/local/go/bin:$PATH"
 export GOPATH=$HOME/Coding/Go
+
+
+source "/Users/ilya/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
