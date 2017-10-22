@@ -2,11 +2,16 @@
 set rtp+=/usr/local/opt/fzf
 
 let mapleader = " "
-imap <C-h> <esc>:w<cr>
+" imap <C-h> <esc>:w<cr>
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
-" Colorscheme
-colorscheme pablo
+" colorscheme quantum
+colorscheme jellybeans
+" colorscheme space-vim-dark
+" let g:space_vim_dark_background = 233
 
 " Some protection for annoying typos
 command! W w
@@ -58,7 +63,7 @@ hi CursorLine cterm=none ctermbg=52 ctermfg=none
 " Line length ruler
 "===============================================
 
-set textwidth=80
+set textwidth=100
 set colorcolumn=+1
 hi ColorColumn ctermbg=52 
 
@@ -68,25 +73,26 @@ hi ColorColumn ctermbg=52
 
 set number
 set numberwidth=5
+highlight LineNr ctermfg=darkgrey ctermbg=233
+highlight CursorLineNr ctermfg=grey ctermbg=52
 
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunc
+" function! NumberToggle()
+"   if(&relativenumber == 1)
+"     set norelativenumber
+"   else
+"     set relativenumber
+"   endif
+" endfunc
 
-nnoremap <C-n> :call NumberToggle()<cr>
+" nnoremap <C-n> :call NumberToggle()<cr>
 
-:au FocusLost * :set norelativenumber
-:au FocusGained * :set relativenumber
+" :au FocusLost * :set norelativenumber
+" :au FocusGained * :set relativenumber
 
 "===============================================
 " Tabs and spaces
 "===============================================
 
-set number
 set tabstop=2
 set shiftwidth=2
 set shiftround
@@ -98,11 +104,43 @@ set expandtab
 let g:indentLine_color_term = 239
 
 "===============================================
-" Use CtrlP Mixed Mode by default
+" ALE
 "===============================================
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
+hi SignColumn ctermbg=233
 
+" let g:ale_sign_error = '•'
+" let g:ale_sign_warning = '•'
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '‼'
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
+
+let g:ale_sign_column_always = 1
+" let g:ale_change_sign_column_color = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+
+let g:ale_linters = {
+\ 'ruby': ['rubocop'],
+\}
+
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
+" hi link ALEErrorSign   error
+" hi link ALEWarningSign warning
+
+"===============================================
+" FZF
+"===============================================
 nnoremap <C-p> :Files<CR>
-nnoremap <Leader><Leader> :Buffers<CR>
+nnoremap ; :Buffers<CR>
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
+
+" Make trailing spaces very visible
+highlight SpecialKey ctermbg=Yellow guibg=Yellow
+
+"===============================================
+" FZF
+"===============================================
+
+let g:UltiSnipsExpandTrigger="<C-h>"
