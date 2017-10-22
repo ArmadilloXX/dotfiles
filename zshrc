@@ -1,5 +1,24 @@
+# Returns whether the given command is executable or aliased.
+_has() {
+  return $( whence $1 >/dev/null )
+}
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/ilya/.oh-my-zsh
+
+# fzf via Homebrew
+if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+  source /usr/local/opt/fzf/shell/completion.zsh
+fi
+
+# fzf + ag configuration
+if _has fzf && _has ag; then
+  export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_DEFAULT_OPTS="--color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108 --color info:108,prompt:109,spinner:108,pointer:168,marker:168"
+fi
 
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
@@ -73,7 +92,7 @@ SPACESHIP_VI_MODE_SHOW=false
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vagrant vi-mode)
+plugins=(vagrant vi-mode kitchen)
 
 # User configuration
 
@@ -106,6 +125,7 @@ alias current='cd ~/Coding/RoR/mkdev/flashcards-chef-repo/'
 alias be='bundle exec'
 alias bi='bundle install'
 alias dmlocal='eval "$(docker-machine env -u)"'
+alias celar='clear'
 
 # Fix Vagrant issue when ulimit is too small
 ulimit -n 4096
@@ -130,6 +150,10 @@ dash() {
 	open dash://$1
 }
 
+showmod() {
+  stat -f "%N: %Mp%Lp" $1
+}
+
 # Jenv configuration
 export JENV_ROOT=/usr/local/var/jenv
 export PATH="/usr/local/sbin:$PATH"
@@ -142,6 +166,7 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
 export HOMEBREW_GITHUB_API_TOKEN=$(security find-generic-password -s 'Homebrew GH Token' -w)
+export HABITAT_AUTH_TOKEN=$(security find-generic-password -s 'Habitat Auth Token' -w)
 export EDITOR="vim"
 export GEM_EDITOR="vim"
 export GIT_EDITOR="vim"
@@ -151,6 +176,5 @@ export GIT_EDITOR="vim"
 #Go configuration
 export PATH="/usr/local/go/bin:$PATH"
 export GOPATH=$HOME/Coding/Go
-
 
 source "/Users/ilya/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
