@@ -17,34 +17,43 @@ Plug 'itchyny/lightline.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'w0rp/ale'
+Plug 'valloric/youcompleteme'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 "===============================================
 " Languages plugins
 "===============================================
-Plug 'slim-template/vim-slim'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
-Plug 'kchmck/vim-coffee-script'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'mattn/emmet-vim'
-Plug 'posva/vim-vue'
+" Plug 'posva/vim-vue'
 
 "===============================================
 " Themes
 "===============================================
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'dracula/vim'
+Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
 
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'powerline',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ],
+      \             [ 'linter_warnings', 'linter_errors', 'linter_ok' ],],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightLineFugitive',
@@ -53,17 +62,22 @@ let g:lightline = {
       \   'filetype': 'LightLineFiletype',
       \   'fileencoding': 'LightLineFileencoding',
       \   'mode': 'LightLineMode',
-      \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
+      \   'linter_warnings': 'LightlineLinterWarnings',
+      \   'linter_errors': 'LightlineLinterErrors',
+      \   'linter_ok': 'LightlineLinterOK'
       \ },
       \ 'component_type': {
-      \   'syntastic': 'error',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error',
+      \   'linter_ok': 'ok'
       \ },
       \ 'subseparator': { 'left': '\ue0b1', 'right': '\ue0b3' },
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" }
       \ }
+
+autocmd User ALELint call lightline#update()
 
 function! LightLineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -89,7 +103,8 @@ endfunction
 function! LightLineFugitive()
   try
     if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = "\ue725  "  " edit here for cool mark e0a0
+      " let mark = "\ue725  "  " edit here for cool mark e0a0
+      let mark = "\ue0a0  "  " edit here for cool mark e0a0
       let branch = fugitive#head()
       return branch !=# '' ? mark.branch : ''
     endif
@@ -164,6 +179,28 @@ augroup END
 function! s:syntastic()
   SyntasticCheck
   call lightline#update()
+endfunction
+
+" ale + lightline
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('‼ %d', all_non_errors)
+endfunction
+
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('✗ %d', all_errors)
+endfunction
+
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓' : ''
 endfunction
 
 let g:unite_force_overwrite_statusline = 0
