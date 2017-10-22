@@ -1,6 +1,7 @@
 [alias]
   l = log --pretty=colored	
 	ctags = !.git/hooks/ctags
+	whatadded = log --diff-filter=A
 [pretty]
   colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
 [user]
