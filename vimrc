@@ -8,8 +8,10 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+colorscheme material-monokai
+" let g:quantum_black=1
 " colorscheme quantum
-colorscheme jellybeans
+" colorscheme jellybeans
 " colorscheme space-vim-dark
 " let g:space_vim_dark_background = 233
 
@@ -144,3 +146,5 @@ highlight SpecialKey ctermbg=Yellow guibg=Yellow
 "===============================================
 
 let g:UltiSnipsExpandTrigger="<C-h>"
+
+let g:rainbow_active = 1
