@@ -173,8 +173,11 @@ export GIT_EDITOR="vim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#Go configuration
-export PATH="/usr/local/go/bin:$PATH"
-export GOPATH=$HOME/Coding/Go
+# Goenv configuration
+# export PATH="/usr/local/go/bin:$PATH"
+# export GOPATH=$HOME/Coding/Go
+eval "$(goenv init -)"
 
 source "/Users/ilya/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
