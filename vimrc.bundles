@@ -22,6 +22,7 @@ Plug 'w0rp/ale'
 Plug 'valloric/youcompleteme'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'luochen1990/rainbow'
 
 "===============================================
 " Languages plugins
@@ -73,9 +74,12 @@ let g:lightline = {
       \   'linter_errors': 'error',
       \   'linter_ok': 'ok'
       \ },
-      \ 'subseparator': { 'left': '\ue0b1', 'right': '\ue0b3' },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" }
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'separator': { 'left': "", 'right': "" }
       \ }
+
+" \ 'subseparator': { 'left': '\ue0b1', 'right': '\ue0b3' },
+" \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" }
 
 autocmd User ALELint call lightline#update()
 
