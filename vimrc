@@ -1,5 +1,6 @@
 "To use fzf in Vim, add the following line to your .vimrc:
 set rtp+=/usr/local/opt/fzf
+set regexpengine=1
 
 let mapleader = " "
 " imap <C-h> <esc>:w<cr>
@@ -135,7 +136,7 @@ let g:ale_linters = {
 " FZF
 "===============================================
 nnoremap <C-p> :Files<CR>
-nnoremap ; :Buffers<CR>
+nnoremap <Tab> :Buffers<CR>
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
 
 " Make trailing spaces very visible
