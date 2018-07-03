@@ -136,16 +136,23 @@ let g:ale_linters = {
 " FZF
 "===============================================
 nnoremap <C-p> :Files<CR>
+nnoremap <Leader><Leader> :Ag<CR>
 nnoremap <Tab> :Buffers<CR>
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
 
 " Make trailing spaces very visible
 highlight SpecialKey ctermbg=Yellow guibg=Yellow
 
+" Command for git grep
+" - fzf#vim#grep(command, with_column, [options], [fullscreen])
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
 "===============================================
-" FZF
+" UltiSnips
 "===============================================
 
 let g:UltiSnipsExpandTrigger="<C-h>"
-
 let g:rainbow_active = 1
