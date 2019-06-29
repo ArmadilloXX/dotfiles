@@ -90,7 +90,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker vi-mode git jsontools)
+plugins=(git vi-mode jsontools docker)
 
 # User configuration
 
@@ -165,15 +165,23 @@ eval "$(nodenv init -)"
 
 # export HOMEBREW_GITHUB_API_TOKEN=$(security find-generic-password -s 'Homebrew GH Token' -w)
 # export HABITAT_AUTH_TOKEN=$(security find-generic-password -s 'Habitat Auth Token' -w)
-export EDITOR="vim"
-export GEM_EDITOR="vim"
-export GIT_EDITOR="vim"
+# export EDITOR="vim"
+# export GEM_EDITOR="vim"
+# export GIT_EDITOR="vim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #Go configuration
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
+# export GOENV_ROOT="$HOME/.goenv"
+# export PATH="$GOENV_ROOT/bin:$PATH"
+# export HOMEBREW_GITHUB_API_TOKEN=$(security find-generic-password -s 'Homebrew GH Token' -w)
+# export HABITAT_AUTH_TOKEN=$(security find-generic-password -s 'Habitat Auth Token' -w)
+export EDITOR="nvim"
+export GEM_EDITOR="nvim"
+export GIT_EDITOR="nvim"
+
+# Goenv configuration
+export PATH="/usr/local/go/bin:$PATH"
 export GOPATH=$HOME/Coding/Go
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
@@ -191,3 +199,13 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Set StanfordCoreNLP env variables
 # export STANFORD_JAR_PATH="/Users/ilya/Coding/Projects/stanford-bin/"
 # export STANFORD_MODEL_PATH="/Users/ilya/Coding/Projects/stanford-bin/"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export LC_ALL=en_US.UTF-8
+export PATH=$HOME/bin:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ilya/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ilya/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ilya/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ilya/google-cloud-sdk/completion.zsh.inc'; fi
