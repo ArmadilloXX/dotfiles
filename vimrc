@@ -155,4 +155,7 @@ command! -bang -nargs=* GGrep
 "===============================================
 
 let g:UltiSnipsExpandTrigger="<C-h>"
+let g:UltiSnipsJumpForwardTrigger="<C-b>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+
 let g:rainbow_active = 1
