@@ -184,9 +184,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 #Go configuration
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
-# export PATH="/usr/local/go/bin:$PATH"
 export GOPATH=$HOME/Coding/Go
 eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 #Rust configuration
 export PATH="$HOME/.cargo/bin:$PATH"
