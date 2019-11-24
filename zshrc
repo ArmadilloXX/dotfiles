@@ -171,16 +171,6 @@ export GIT_EDITOR="vim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-<<<<<<< HEAD
-# Goenv configuration
-# export PATH="/usr/local/go/bin:$PATH"
-# export GOPATH=$HOME/Coding/Go
-eval "$(goenv init -)"
-
-source "/Users/ilya/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-=======
 #Go configuration
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
@@ -201,4 +191,3 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Set StanfordCoreNLP env variables
 # export STANFORD_JAR_PATH="/Users/ilya/Coding/Projects/stanford-bin/"
 # export STANFORD_MODEL_PATH="/Users/ilya/Coding/Projects/stanford-bin/"
->>>>>>> Minor but useful updates
