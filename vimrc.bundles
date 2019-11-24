@@ -45,17 +45,31 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "===============================================
 " Themes
 "===============================================
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'dracula/vim'
-Plug 'nanotech/jellybeans.vim'
+" Plug 'tyrannicaltoucan/vim-quantum'
+" Plug 'dracula/vim'
+" Plug 'nanotech/jellybeans.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
+filetype on
+filetype plugin on
+filetype plugin indent on
+      " \   'filetype': 'MyFileType',
+      " \   'fileformat': 'MyFileFormat',
+      " \   'filetype': 'LightLineFiletype',
+      " \   'fileformat': 'LightLineFileformat',
+
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_statusline_fileformat_symbols = 1
 
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ],
+      \             [ 'fugitive', 'filetype', 'fileformat', 'filename' ],
       \             [ 'linter_checking', 'linter_warnings', 'linter_errors', 'linter_ok' ],],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
@@ -64,8 +78,8 @@ let g:lightline = {
       \ 'component_function': {
       \   'fugitive': 'LightLineFugitive',
       \   'filename': 'LightLineFilename',
-      \   'fileformat': 'LightLineFileformat',
-      \   'filetype': 'LightLineFiletype',
+      \   'filetype': 'MyFileType',
+      \   'fileformat': 'MyFileFormat',
       \   'fileencoding': 'LightLineFileencoding',
       \   'mode': 'LightLineMode',
       \ },
@@ -89,6 +103,14 @@ let g:lightline = {
 " \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" }
 
 autocmd User ALELint call lightline#update()
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 function! LightLineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
