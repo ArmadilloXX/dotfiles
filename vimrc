@@ -1,15 +1,18 @@
 "To use fzf in Vim, add the following line to your .vimrc:
 set rtp+=/usr/local/opt/fzf
 set regexpengine=1
+set termguicolors
 
 let mapleader = " "
-" imap <C-h> <esc>:w<cr>
+set guifont=VictorMono:h14
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-colorscheme material-monokai
+" colorscheme material-monokai
+let ayucolor="mirage"
+colorscheme ayu
 " let g:quantum_black=1
 " colorscheme quantum
 " colorscheme jellybeans
@@ -159,3 +162,13 @@ let g:UltiSnipsJumpForwardTrigger="<C-b>"
 let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 
 let g:rainbow_active = 1
+
+"===============================================
+" Coc.nvim
+"===============================================
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)<Paste>
+nnoremap <Plug>(coc-definition)          :<C-u>call CocActionAsync('jumpDefinition')<CR>
