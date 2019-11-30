@@ -2,6 +2,20 @@
 _has() {
   return $( whence $1 >/dev/null )
 }
+# Turn on Antigen
+source /usr/local/share/antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load theme
+# antigen theme denysdovhan/spaceship-prompt
+
+# Tell Antigen that you're done.
+antigen apply
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/ilya/.oh-my-zsh
@@ -45,6 +59,7 @@ bindkey -e
 # SPACESHIP_VI_MODE_SHOW=false
 
 ZSH_THEME="robbyrussell"
+# ZSH_THEME="excess"
 # ZSH_THEME="miloshadzic"
 # ZSH_THEME="agnoster"
 
@@ -124,6 +139,10 @@ alias be='bundle exec'
 alias bi='bundle install'
 alias dmlocal='eval "$(docker-machine env -u)"'
 alias celar='clear'
+alias dcm='docker-compose'
+alias pg='psql -h localhost -U postgres'
+alias k='kubectl'
+alias mk='minikube'
 
 # Fix Vagrant issue when ulimit is too small
 ulimit -n 4096
@@ -181,11 +200,8 @@ export GEM_EDITOR="nvim"
 export GIT_EDITOR="nvim"
 
 # Goenv configuration
-# export PATH="/usr/local/go/bin:$PATH"
-# export GOPATH=$HOME/Coding/Go
-# eval "$(goenv init -)"
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
+export PATH="$HOME/Go/bin:/usr/local/go/bin:$PATH"
+export GOPATH=$HOME/Go
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
@@ -212,3 +228,10 @@ if [ -f '/Users/ilya/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ilya/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/ilya/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ilya/google-cloud-sdk/completion.zsh.inc'; fi
+# source "/Users/ilya/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH=$HOME/bin:$PATH
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+export PATH=$HOME/.kerl/builds/21.0/release_21.0/bin:$PATH
+[[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"

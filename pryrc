@@ -1,8 +1,8 @@
 #!/usr/bin/ruby
 # frozen_string_literal: true
-require 'awesome_print'
+# require 'awesome_print'
 
-AwesomePrint.pry!
+# AwesomePrint.pry!
 
 class Object # :nodoc:
   # Small equality helper
