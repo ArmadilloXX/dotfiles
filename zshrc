@@ -36,17 +36,15 @@ bindkey -e
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
 
 # Spaceship theme configuration
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_BATTERY_SHOW=false
-SPACESHIP_BATTERY_ALWAYS_SHOW=false
-SPACESHIP_VI_MODE_SHOW=false
-#
-#
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="excess"
+# SPACESHIP_PACKAGE_SHOW=false
+# SPACESHIP_BATTERY_SHOW=false
+# SPACESHIP_BATTERY_SHOW=always
+# SPACESHIP_VI_MODE_SHOW=false
+
+ZSH_THEME="robbyrussell"
 # ZSH_THEME="miloshadzic"
 # ZSH_THEME="agnoster"
 
@@ -92,7 +90,7 @@ SPACESHIP_VI_MODE_SHOW=false
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vagrant vi-mode kitchen jsontools)
+plugins=(docker vi-mode git jsontools)
 
 # User configuration
 
@@ -102,7 +100,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -165,19 +163,31 @@ export NODENV_ROOT=/usr/local/var/nodenv
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
-export HOMEBREW_GITHUB_API_TOKEN=$(security find-generic-password -s 'Homebrew GH Token' -w)
-export HABITAT_AUTH_TOKEN=$(security find-generic-password -s 'Habitat Auth Token' -w)
+# export HOMEBREW_GITHUB_API_TOKEN=$(security find-generic-password -s 'Homebrew GH Token' -w)
+# export HABITAT_AUTH_TOKEN=$(security find-generic-password -s 'Habitat Auth Token' -w)
 export EDITOR="vim"
 export GEM_EDITOR="vim"
 export GIT_EDITOR="vim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Goenv configuration
-# export PATH="/usr/local/go/bin:$PATH"
-# export GOPATH=$HOME/Coding/Go
+#Go configuration
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+export GOPATH=$HOME/Coding/Go
 eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
-source "/Users/ilya/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+#Rust configuration
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# source "/Users/ilya/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+
+# Set Spaceship ZSH as a prompt
+# autoload -U promptinit; promptinit
+# prompt spaceship
+
+# Set StanfordCoreNLP env variables
+# export STANFORD_JAR_PATH="/Users/ilya/Coding/Projects/stanford-bin/"
+# export STANFORD_MODEL_PATH="/Users/ilya/Coding/Projects/stanford-bin/"

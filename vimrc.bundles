@@ -19,10 +19,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'w0rp/ale'
-Plug 'valloric/youcompleteme'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'luochen1990/rainbow'
+" Plug 'valloric/youcompleteme'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 "===============================================
 " Languages plugins
