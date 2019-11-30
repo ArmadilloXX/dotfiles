@@ -27,6 +27,7 @@ Plug 'luochen1990/rainbow'
 " Plug 'valloric/youcompleteme'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
+Plug 'easymotion/vim-easymotion'
 
 "===============================================
 " Languages plugins
@@ -40,7 +41,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'mattn/emmet-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'posva/vim-vue'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'posva/vim-vue'
 
 "===============================================
 " Themes
